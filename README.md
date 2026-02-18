@@ -1,4 +1,4 @@
-# powerbi-marketing-dashboard
+# Marketing Analytics Dashboard (Power BI)
 Marketing Dashboard for product conversions, social media and customer reviews
 
 ## Overview
