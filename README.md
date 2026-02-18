@@ -12,9 +12,13 @@ This dashboard analyses sales performance across products and time periods. It h
 
 ## Screenshots
 ![Dashboard Overview](images/01_Overview.png)
+
 ![Conversion Rate](images/02_Conversion_Rate.png) 
+
 ![Social Media](images/03_Social_Media.png) 
+
 ![Customer Reviews](images/04_Customer_Reviews.png) 
+
 ![Ratings](images/05_Ratings.png)
 
 ## Files Included
