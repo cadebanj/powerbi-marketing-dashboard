@@ -48,6 +48,31 @@ SELECT *
 FROM Duplicate_Records
 ORDER BY JourneyID;
 
+### Engagement Data cleaning
+- Normalised `ContentType`
+- Split combined views/clicks field
+- Removed newsletter entries
+
+```sql
+SELECT
+    EngagementID,
+    UPPER(REPLACE(ContentType, 'Socialmedia', 'Social Media')) AS ContentType,
+    LEFT(ViewsClicksCombined, CHARINDEX('-', ViewsClicksCombined) - 1) AS Views
+FROM dbo.engagement_data;
+
+### Customer Reviews Cleaning
+- Removed double spacing in review text
+```sql
+SELECT
+    ReviewID,
+    REPLACE(ReviewText, '  ', ' ') AS CleanReviewText
+FROM dbo.customer_reviews;
+
+### Customer & Product Enrichment
+- Joined customers table with geography table
+- Created age bands
+- Categorised products by price
+
 
 ## Files Included
 - 'README.md' - Project documentation
