@@ -67,7 +67,7 @@ SELECT
     ReviewID,
     REPLACE(ReviewText, '  ', ' ') AS CleanReviewText
 FROM dbo.customer_reviews;
-
+```
 ### Customer & Product Enrichment
 - Joined customers table with geography table
 - Created age bands
