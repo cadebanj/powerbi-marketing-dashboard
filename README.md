@@ -11,7 +11,7 @@ This dashboard analyses sales performance across products and time periods. It h
 - Funnel analysis
 
 ## Files Included
-- 'READNE.md' - Project documentation
+- 'README.md' - Project documentation
 
 ## Tools used
 - Power BI Desktop
