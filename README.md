@@ -29,24 +29,18 @@ All SQL scripts are available in the `/sql` folder.
 ### Duplicate Removal (CTE + Window Functions)
 - Remove duplicate customer journey rows using ROW_NUMBER()
 ```sql
-WITH Duplicate_Records AS (
-    SELECT
-        JourneyID,
-        CustomerID,
-        ProductID,
-        VisitDate,
-        Stage,
-        Action,
-        Duration,
-        ROW_NUMBER() OVER (
-            PARTITION BY CustomerID, ProductID, VisitDate, Stage, Action
-            ORDER BY JourneyID
-        ) AS Row_Num
+-- Identify duplicates using ROW_NUMBER() and keep the first record per journey
+WITH Duplicated_Records AS (
+    SELECT *,
+           ROW_NUMBER() OVER (
+               PARTITION BY CustomerID, ProductID, VisitDate, Stage, Action
+               ORDER BY JourneyID
+           ) AS Row_Num
     FROM dbo.customer_journey
 )
 SELECT *
-FROM Duplicate_Records
-ORDER BY JourneyID;
+FROM Duplicated_Records
+WHERE rn = 1;
 ```
 
 ### Engagement Data cleaning
