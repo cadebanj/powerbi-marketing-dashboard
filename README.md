@@ -21,6 +21,34 @@ This dashboard analyses sales performance across products and time periods. It h
 
 ![Ratings](images/05_Ratings.png)
 
+## SQL Data Preparation
+
+The dataset required cleaning before being imported into Power BI.  
+All SQL scripts are available in the `/sql` folder.
+
+### Duplicate Removal (CTE + Window Functions)
+
+```sql
+WITH Duplicate_Records AS (
+    SELECT
+        JourneyID,
+        CustomerID,
+        ProductID,
+        VisitDate,
+        Stage,
+        Action,
+        Duration,
+        ROW_NUMBER() OVER (
+            PARTITION BY CustomerID, ProductID, VisitDate, Stage, Action
+            ORDER BY JourneyID
+        ) AS Row_Num
+    FROM dbo.customer_journey
+)
+SELECT *
+FROM Duplicate_Records
+ORDER BY JourneyID;
+
+
 ## Files Included
 - 'README.md' - Project documentation
 
