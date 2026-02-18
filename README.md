@@ -27,7 +27,7 @@ The dataset required cleaning before being imported into Power BI.
 All SQL scripts are available in the `/sql` folder.
 
 ### Duplicate Removal (CTE + Window Functions)
-
+- Remove duplicate customer journey rows using ROW_NUMBER()
 ```sql
 WITH Duplicate_Records AS (
     SELECT
@@ -47,6 +47,7 @@ WITH Duplicate_Records AS (
 SELECT *
 FROM Duplicate_Records
 ORDER BY JourneyID;
+```
 
 ### Engagement Data cleaning
 - Normalised `ContentType`
@@ -59,6 +60,7 @@ SELECT
     UPPER(REPLACE(ContentType, 'Socialmedia', 'Social Media')) AS ContentType,
     LEFT(ViewsClicksCombined, CHARINDEX('-', ViewsClicksCombined) - 1) AS Views
 FROM dbo.engagement_data;
+```
 
 ### Customer Reviews Cleaning
 - Removed double spacing in review text
@@ -68,10 +70,25 @@ SELECT
     REPLACE(ReviewText, '  ', ' ') AS CleanReviewText
 FROM dbo.customer_reviews;
 ```
+
 ### Customer & Product Enrichment
 - Joined customers table with geography table
 - Created age bands
 - Categorised products by price
+```sql
+SELECT
+	ProductID,
+	ProductName,
+	Price,
+	CASE --Categorize products in 'Low', 'Medium', and 'High' based on their price
+		WHEN Price < 50 THEN 'Low'
+		WHEN Price >= 50 AND Price < 150 THEN 'Medium'
+		ELSE 'High'
+	END AS PriceCategory
+
+FROM
+	dbo.products;
+```
 
 
 ## Files Included
