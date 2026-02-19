@@ -1,8 +1,11 @@
 # Marketing Analytics Dashboard (Power BI)
 Marketing Dashboard for product conversions, social media and customer reviews
 
-## Overview
-This dashboard analyses sales performance across products and time periods. It highlights KPIs such as revenue, conversion rate, social media engagement and customer reviews.
+## Executive Summary
+This dashboard consolidates marketing and customer performance across three areas: conversion performance, social engagement, and customer feedback. The key insight is that performance varies meaningfully by product and month, with clear opportunities to:
+-increase conversion through targeted product optimisation
+-improve engagement efficiency as social interactions decline over time
+-use customer review/rating signals to guide product and customer experience improvements
 
 ## Features
 - Interactive slicers
